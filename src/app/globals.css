@@ -123,9 +123,129 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden selection:bg-rose-500/20 selection:text-rose-600;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
+}
+
+/* Custom Birthday Animations */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.9));
+  }
+  25% {
+    transform: scale(1.15) rotate(2deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(245, 158, 11, 1));
+  }
+  50% {
+    transform: scale(0.9) rotate(-2deg);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.8));
+  }
+  75% {
+    transform: scale(1.1) rotate(1deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(251, 146, 60, 0.95));
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(244, 63, 94, 0.55);
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 1.2s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass-card {
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Magic UI Codeforge Aesthetic Utilities */
+.shadow-badge {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 2px 4px 0px rgba(0, 0, 0, 0.04), inset 0px 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.dark .shadow-badge {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.4), 0px 2px 4px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 1px 0px rgba(255, 255, 255, 0.05);
+}
+
+.shadow-magic-btn {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1), 0px 2px 4px 0px rgba(0, 0, 0, 0.05), inset 0px 0px 1.5px #f43f5e, inset 0px 2.5px 0px rgba(255, 255, 255, 0.2);
+}
+
+/* Corner Crosshair Decoration Helper */
+.crosshair-corners {
+  position: relative;
+}
+
+.crosshair-corners::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -6px;
+  width: 12px;
+  height: 1px;
+  background-color: var(--color-border);
+  z-index: 40;
+}
+
+.crosshair-corners::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -1px;
+  width: 1px;
+  height: 12px;
+  background-color: var(--color-border);
+  z-index: 40;
 }
