@@ -1,7 +1,9 @@
+import Navbar from "@/components/Navbar/Navbar";
+
 export default function Home() {
   return (
     <div className="">
-      <p className="text-5xl hover:text-amber-600">TEST</p>
+      <Navbar />
     </div>
   );
 }
